@@ -15,11 +15,7 @@ const LoginForm = () => {
     e.preventDefault();
     console.log(user);
   };
-  //event handler for reset form
-  const reset={ ...user, username: "", password: "" }
-  const handleReset = () => {
-    setUser(reset);
-  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -54,17 +50,8 @@ const LoginForm = () => {
             {" "}
             Login
           </button>
-          <button
-            className="btn btn-outline-danger "
-            type="reset"
-            onClick={handleReset}
-          >
-            {" "}
-            Reset
-          </button>
         </div>
       </form>
-      
     </div>
   );
 };
