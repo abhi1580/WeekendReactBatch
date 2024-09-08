@@ -18,6 +18,8 @@ const LoginForm = () => {
 
   return (
     <div>
+      <h4 className="text-center">Login Form</h4>
+      <hr/>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label className="form-label" htmlFor="un">

@@ -8,15 +8,23 @@ const SignUpForm = () => {
     hobbies: [],
     contactNo: "",
     email: "",
-    qualification:""
+    qualification: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   //event handler to handle form submit event
   const handlerSubmit = (e) => {
     e.preventDefault();
-    alert("Form submitted");
-    setIsSubmitted(true);
+    if (profile.password !== profile.confirmPassword) {
+      setIsSubmitted(false);
+      alert("Form not submitted");
+    } else {
+      setIsSubmitted(true);
+      alert("Form submitted");
+    }
   };
   //event handler for reset form
   const reset = {
@@ -27,7 +35,10 @@ const SignUpForm = () => {
     hobbies: [],
     contactNo: "",
     email: "",
-    qualification:""
+    qualification: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
   };
   const handleReset = () => {
     setProfile(reset);
@@ -51,6 +62,8 @@ const SignUpForm = () => {
       {!isSubmitted && (
         <div>
           <h4 className="text-center">Profile Form</h4>
+          <hr />
+
           <form onSubmit={handlerSubmit}>
             <div className="mb-3">
               <input
@@ -151,9 +164,30 @@ const SignUpForm = () => {
                 />
                 <label htmlFor="hb3">Travelling</label>
               </div>
+              <div className="mb-3 ">
+                {/* <label className="form-label m-2" htmlFor="qu">
+                  Educational Qualification:
+                </label> */}
+                <select
+                  data-live-search="true"
+                  required
+                  className="form-select mt-3"
+                  value={profile.qualification}
+                  onChange={(e) => {
+                    setProfile({ ...profile, qualification: e.target.value });
+                  }}
+                >
+                  <option value="">Select Qualification</option>
+                  <option value="B.S.C"> B.S.C</option>
+                  <option value="B.C.A">B.C.A</option>
+                  <option value="B.COM">B.COM</option>
+                  <option value="M.S.C">M.S.C</option>
+                  <option value="M.C.A">M.C.A</option>
+                  <option value="M.COM">M.COM</option>
+                </select>
+              </div>
               <div className="mb-3">
-                <label className="form-label" htmlFor="cn">
-                </label>
+                <label className="form-label" htmlFor="cn"></label>
                 <input
                   type="tel"
                   className="form-control"
@@ -167,31 +201,65 @@ const SignUpForm = () => {
                   }
                 />
               </div>
-              <div>
-                <input className="form-control" type="email" id="email" value={profile.email}
-                 placeholder="Email" onChange={(e)=>{setProfile({...profile,email:e.target.value})}} />
+              <div className="mb-3">
+                <input
+                  className="form-control"
+                  type="email"
+                  id="email"
+                  value={profile.email}
+                  placeholder="Email"
+                  required
+                  onChange={(e) => {
+                    setProfile({ ...profile, email: e.target.value });
+                  }}
+                />
               </div>
-              <div className="mb-3 ">
-              <label className="form-label" htmlFor="qu">
-                Educational Qualification:
-              </label>
-              <select data-live-search="true"
-                required
-                className="form-select"
-                value={profile.qualification}
-                onChange={(e) => {
-                  setProfile({ ...profile, qualification: e.target.value });
-                }}
-              >
-                <option value="">Select Qualification</option>
-                <option value="B.S.C"> B.S.C</option>
-                <option value="B.C.A">B.C.A</option>
-                <option value="B.COM">B.COM</option>
-                <option value="M.S.C">M.S.C</option>
-                <option value="M.C.A">M.C.A</option>
-                <option value="M.COM">M.COM</option>
-              </select>
-            </div>
+
+              <div className="mb-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  required
+                  placeholder="Username"
+                  value={profile.username}
+                  onChange={(e) => {
+                    setProfile({ ...profile, username: e.target.value });
+                  }}
+                />
+              </div>
+              <div className="mb-3">
+                <input
+                  className="form-control"
+                  type="password"
+                  value={profile.password}
+                  required
+                  placeholder="New password"
+                  onChange={(e) => {
+                    setProfile({ ...profile, password: e.target.value });
+                  }}
+                  pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$^!]).{6,10})"
+                />
+                <div className="form-text">
+                  Password must be 6 to 10 characters long.It must contain at
+                  least one lower case alphabet, one upper case alphabet, one
+                  digit and any one of the sysbols such as @#$^!
+                </div>
+              </div>
+              <div className="mb-3">
+                <input
+                  className="form-control"
+                  type="password"
+                  value={profile.confirmPassword}
+                  required
+                  placeholder="Confirm new password"
+                  onChange={(e) =>
+                    setProfile({ ...profile, confirmPassword: e.target.value })
+                  }
+                />
+                {profile.password !== profile.confirmPassword && (
+                  <div style={{ color: "red" }}>Password does not match</div>
+                )}
+              </div>
             </div>
             <div className="mb-3 text-center">
               <button className="btn btn-outline-success m-2" type="submit">

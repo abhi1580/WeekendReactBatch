@@ -1,6 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
-import { FaCar } from "react-icons/fa";
 
 const ShopNavBar = () => {
   return (
@@ -17,7 +16,12 @@ const ShopNavBar = () => {
           </li>
           <li className="nav-item">
             <Link className="nav-link" to={"/cars"}>
-              <FaCar />
+              Cars
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to={"/electronic"}>
+              Electronics
             </Link>
           </li>
         </ul>
