@@ -21,7 +21,7 @@ const ShopRouter = () => {
             {/* Child routes of electronic route */}
             <Route path="mobile" element={<Mobile />}>
               <Route path="" element={<MobileGallery />} />
-              <Route path="detail" element={<MobileDetails />} />
+              <Route path="detail/:mobile_id" element={<MobileDetails />} />
             </Route>
             <Route path="laptop" element={<Laptop />} />
           </Route>
