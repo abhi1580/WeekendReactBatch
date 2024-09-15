@@ -1,10 +1,13 @@
 import { useNavigate, useParams } from "react-router-dom";
 import mobiles from "./mobile_data";
+import { useContext } from "react";
+import { ShopContext } from "../../../App";
 
 const MobileDetails = () => {
   const { mobile_id } = useParams();
   const navigate = useNavigate();
   const converted_id = parseFloat(mobile_id);
+  const { addToCart } = useContext(ShopContext);
   const mobileObj = mobiles.find((mbl) => mbl.id === converted_id);
   return (
     <div className="d-flex flex-column p3">
@@ -16,7 +19,15 @@ const MobileDetails = () => {
         <div className="d-flexflex-column justify-content-center">
           <h2>Model: {mobileObj.model}</h2>
           <h2>Price: &#8377;{mobileObj.price}</h2>
-          <button className="btn btn-success">Add to cart</button>
+          <button
+            className="btn btn-success"
+            onClick={() => {
+              addToCart(mobileObj);
+              alert("Item added to cart");
+            }}
+          >
+            Add to cart
+          </button>
         </div>
       </div>
 

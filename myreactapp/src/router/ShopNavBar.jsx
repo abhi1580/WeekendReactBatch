@@ -1,5 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
+import { IoCartOutline } from "react-icons/io5";
 
 const ShopNavBar = () => {
   return (
@@ -24,11 +25,26 @@ const ShopNavBar = () => {
               Electronics
             </Link>
           </li>
+          <li className="nav-item">
+            <Link className="nav-link" to={"/context"}>
+              Context Demo
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to={"/reducer"}>
+              Reducer Demo
+            </Link>
+          </li>
         </ul>
         <ul className="navbar-nav ms-auto">
           <li className="nav-item">
             <Link className="nav-link" to={"/login"}>
               Login or Register
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to={"/cart"}>
+              <IoCartOutline />
             </Link>
           </li>
         </ul>
