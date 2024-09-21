@@ -13,6 +13,8 @@ import ReducerDemo from "../components/reducer/ReducerDemo";
 import PageNotFount from "../components/PageNotFount";
 import ShoppingCart from "../components/cart/ShoppingCart";
 import Home from "../components/Home";
+import RefDemo from "../components/ref/RefDemo";
+import EffectDemo from "../components/effect/EffectDemo";
 
 const ShopRouter = () => {
   return (
@@ -33,6 +35,8 @@ const ShopRouter = () => {
           <Route path="context" element={<ContextDemo />} />
           <Route path="reducer" element={<ReducerDemo />} />
           <Route path="cart" element={<ShoppingCart />} />
+          <Route path="ref" element={<RefDemo />} />
+          <Route path="effect" element={<EffectDemo />} />
           <Route path="*" element={<PageNotFount />} />
         </Route>
       </Routes>

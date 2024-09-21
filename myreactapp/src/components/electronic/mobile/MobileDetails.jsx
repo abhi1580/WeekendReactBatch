@@ -9,52 +9,72 @@ const MobileDetails = () => {
   const converted_id = parseFloat(mobile_id);
   const { addToCart } = useContext(ShopContext);
   const mobileObj = mobiles.find((mbl) => mbl.id === converted_id);
+
   return (
-    <div className="d-flex flex-column p3">
-      <div className="d-flex border justify-content-evenly p-3">
-        <h2>Brand: {mobileObj.brand}</h2>
-        <div>
-          <img src={mobileObj.image} alt="model" style={{ height: "400px" }} />
-        </div>
-        <div className="d-flexflex-column justify-content-center">
-          <h2>Model: {mobileObj.model}</h2>
-          <h2>Price: &#8377;{mobileObj.price}</h2>
-          <button
-            className="btn btn-success"
-            onClick={() => {
-              addToCart(mobileObj);
-              alert("Item added to cart");
-            }}
-          >
-            Add to cart
-          </button>
+    <div className="container py-5">
+      {/* Mobile Details Card */}
+      <div className="card mb-4 shadow-lg">
+        <div className="row g-0">
+          {/* Image Section */}
+          <div className="col-md-6 d-flex align-items-center justify-content-center">
+            <img
+              src={mobileObj.image}
+              alt={mobileObj.model}
+              className="img-fluid rounded-start"
+              style={{ height: "400px", objectFit: "contain" }}
+            />
+          </div>
+          {/* Details Section */}
+          <div className="col-md-6">
+            <div className="card-body">
+              <h2 className="card-title">{mobileObj.brand}</h2>
+              <h4 className="card-subtitle mb-3">{mobileObj.model}</h4>
+              <h3 className="text-success">
+                &#8377; {mobileObj.price.toFixed(2)}
+              </h3>
+              <button
+                className="btn btn-success mt-3"
+                onClick={() => {
+                  addToCart(mobileObj);
+                  alert("Item added to cart");
+                }}
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="d-flex">
-        <h2>Specification Details:</h2>
-        <table className="table table-bordered">
-          <tr>
-            <tr>
-              <th>Primary Camera:</th>
-              <td>{mobileObj.specification.camera.primary_camera}</td>
-            </tr>
-            <tr>
-              <th>Front Camera:</th>
-              <td> {mobileObj.specification.camera.front_camera}</td>
-            </tr>
-            <tr>
-              <th>Storage</th>
-              <td>{mobileObj.specification.storage}</td>
-            </tr>
-            <tr>
-              <th>RAM Camera:</th>
-              <td>{mobileObj.specification.ram}</td>
-            </tr>
-          </tr>
-        </table>
+      {/* Specification Section */}
+      <div className="card shadow-lg mb-4">
+        <div className="card-body">
+          <h3>Specification Details</h3>
+          <table className="table table-striped">
+            <tbody>
+              <tr>
+                <th>Primary Camera:</th>
+                <td>{mobileObj.specification.camera.primary_camera}</td>
+              </tr>
+              <tr>
+                <th>Front Camera:</th>
+                <td>{mobileObj.specification.camera.front_camera}</td>
+              </tr>
+              <tr>
+                <th>Storage:</th>
+                <td>{mobileObj.specification.storage}</td>
+              </tr>
+              <tr>
+                <th>RAM:</th>
+                <td>{mobileObj.specification.ram}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <div>
+
+      {/* Back Button */}
+      <div className="text-center">
         <button
           className="btn btn-outline-secondary"
           onClick={() => navigate("/electronic/mobile")}

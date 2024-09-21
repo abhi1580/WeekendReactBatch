@@ -32,10 +32,11 @@ function App() {
     setCart({ type: "Add TO CART", item: product });
   };
   const removeFromCart = (cartItem) => {
+    console.log("remove cart button clicked");
     setCart({ type: "REMOVE", item: cartItem });
   };
   return (
-    <div className="container">
+    <div className="">
       <ShopContext.Provider value={{ cart, addToCart, removeFromCart }}>
         <ShopRouter />
       </ShopContext.Provider>
