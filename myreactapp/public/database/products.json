@@ -1,0 +1,26 @@
+[
+  {
+    "id": "p001",
+    "name": "Mobile",
+    "brand": "Vivo",
+    "price": 23000.0
+  },
+  {
+    "id": "p002",
+    "name": "Laptop",
+    "brand": "HP",
+    "price": 78000.0
+  },
+  {
+    "id": "p003",
+    "name": "Music System",
+    "brand": "JBL",
+    "price": 15000.0
+  },
+  {
+    "id": "p004",
+    "name": "Microwave Oven",
+    "brand": "Pjiplips",
+    "price": 17000.0
+  }
+]
